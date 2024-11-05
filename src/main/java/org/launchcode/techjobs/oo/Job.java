@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
+import java.util.HashMap;
 
 public class Job {
 
@@ -27,12 +28,33 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
+    @Override
+    public String toString(){
+        String aName = this.getName();
+        String anEmployer = this.getEmployer().toString();
+        String aLocation = this.getLocation().toString();
+        String aPositionType = this.getPositionType().toString();
+        String aCoreCompetency = this.getCoreCompetency().toString();
+
+        if (aName.isEmpty() || aName == null) {
+            aName = "Data not available";
+        }
+        if (anEmployer.isEmpty() || anEmployer == null) {
+            anEmployer = "Data not available";
+        }
+        if (aLocation.isEmpty() || aLocation == null) {
+            aLocation = "Data not available";
+        }
+        if (aPositionType.isEmpty() || aPositionType == null) {
+            aPositionType = "Data not available";
+        }
+        if (aCoreCompetency.isEmpty() || aCoreCompetency == null) {
+            aCoreCompetency = "Data not available";
+        }
+
+        return System.lineSeparator() + "ID: " + this.getId() + System.lineSeparator() + "Name: " + aName + System.lineSeparator() + "Employer: " + anEmployer + System.lineSeparator() + "Location: " + aLocation + System.lineSeparator() + "Position Type: " + aPositionType + System.lineSeparator() + "Core Competency: " + aCoreCompetency + System.lineSeparator();
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,9 +68,6 @@ public class Job {
     public int hashCode() {
         return Objects.hashCode(id);
     }
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
 
     public int getId() {
         return id;

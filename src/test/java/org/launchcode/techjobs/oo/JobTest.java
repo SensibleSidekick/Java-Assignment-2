@@ -48,4 +48,37 @@ public class JobTest {
 
         assertFalse(testJob1.equals(testJob2));
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job testJob1 = new Job("Data entry", new Employer("MMIT"), new Location("Yardley"), new PositionType("Entry-Level"), new CoreCompetency("Click buttons"));
+
+        String testString = testJob1.toString();
+
+        assertEquals(System.lineSeparator(), testString.substring(0, System.lineSeparator().length()));
+        assertEquals(System.lineSeparator(), testString.substring(testString.length() - System.lineSeparator().length()));
+
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job testJob1 = new Job("Data entry", new Employer("MMIT"), new Location("Yardley"), new PositionType("Entry-Level"), new CoreCompetency("Click buttons"));
+
+        String testString = testJob1.toString();
+        String expectedString = System.lineSeparator() + "ID: " + testJob1.getId() + System.lineSeparator() + "Name: " + testJob1.getName() + System.lineSeparator() + "Employer: " + testJob1.getEmployer() + System.lineSeparator() + "Location: " + testJob1.getLocation() + System.lineSeparator() + "Position Type: " + testJob1.getPositionType() + System.lineSeparator() + "Core Competency: " + testJob1.getCoreCompetency() + System.lineSeparator();
+
+        assertEquals(expectedString, testString);
+
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job testJob1 = new Job("Data entry", new Employer("") , new Location("Yardley"), new PositionType("Entry-Level"), new CoreCompetency("Click buttons"));
+
+        String emptyField = "Data not available";
+        String expectedString = System.lineSeparator() + "ID: " + testJob1.getId() + System.lineSeparator() + "Name: " + testJob1.getName() + System.lineSeparator() + "Employer: " + emptyField + System.lineSeparator() + "Location: " + testJob1.getLocation() + System.lineSeparator() + "Position Type: " + testJob1.getPositionType() + System.lineSeparator() + "Core Competency: " + testJob1.getCoreCompetency() + System.lineSeparator();
+
+        assertEquals(expectedString, testJob1.toString());
+
+    }
 }
