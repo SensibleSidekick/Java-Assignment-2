@@ -8,22 +8,5 @@ public class Employer extends JobField {
         super(value);
     }
 
-    @Override
-    public String toString() {
-        return this.getValue();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employer)) return false;
-        Employer employer = (Employer) o;
-        return getId() == employer.getId();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
 
 }
